@@ -100,3 +100,6 @@ Unproven, not excluded: fintech, banking, ATM, employee wellness and lone-worker
 - Whether the added titles (Head of Claims, Head of VAS or Bancassurance, CFO, CHRO, CRO, Head of Legal and others) exist and hold a say at Kenyan accounts. No research file names them.
 - Whether any Kenyan bank or corporate wellness programme already uses AURA (customers.md says Not found).
 - Whether fleets and logistics operators in Kenya are served by AURA today.
+
+### Additional Exclusion (Added Step 9 Review)
+- **Insurance Brokers & Independent Agents:** Brokers do not own the underlying policyholder relationship or underwriting balance sheet, making per-user monthly fees and API integration unviable (`INFERRED`).

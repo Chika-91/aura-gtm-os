@@ -136,3 +136,7 @@ Objections
 - Whether the added titles exist and have a say at Kenyan accounts. No research file names them.
 - Which role a COO plays, champion or economic buyer.
 - A price per user, so a CFO can model unit economics.
+
+### Divisional Insurance Champions & Care-Team Overhead Notes (Added Step 9 Review)
+- **Additional Champion Titles (Composite & Multi-Entity Insurers):** Head of Medical / Health Insurance, Head of General Insurance, and Head of Life Insurance (each owns divisional P&L, member retention, and loss ratios; `INFERRED`).
+- **Care-Team Overhead & Loss-Reduction Pain:** Emergency care teams currently face heavy logistical and manual phone-chasing overhead when coordinating fragmented responders, while Claims teams lack verifiable scene audit trails to prevent fraud and leakage (`company.md`, `customers.md`, `INFERRED`).

@@ -23,7 +23,7 @@ AURA is a B2B emergency response platform, founded in 2017, that lets businesses
   - `save-clay-schema`: save an approved Clay table to the local table registry
   - `signal-matrix`: build ICP and signal matrices from product and buyer understanding
   - `workspace-cost-audit`: report a whole Clay workspace's monthly spend
-- `context/icp/`: ideal customer profile (icp.md) and buyer personas (personas.md). Read before choosing targets or writing copy.
+- `context/icp/`: ICP (icp.md), buyer personas (personas.md), and scored signal matrix (signal-matrix.md). Read before choosing targets or writing copy.
 - `context/positioning/`: positioning docs. Read before any messaging work.
 - `context/messaging/`: approved messaging and proof points. Read before drafting copy.
 - `context/brand-kit/`: voice, tone and style. Read before anything customer-facing.
