@@ -1,65 +1,88 @@
-# Buyer Personas: AURA Kenya
+# AURA buyer personas (Kenya focus)
 
-> Grounded strictly in context/docs/research/ (company.md, customers.md, competitors.md, market.md, signals.md, voice.md). Checked 2026-11-13.
+Built only from `context/docs/research/` (checked 2026-11-13). Source tags show file and section. INFERRED = my link, no source states it. The research has no buyer interviews, so "own words" are limited to the few exact fragments below and every other item is labeled.
 
-## Persona 1: Champion (Internal Pain & Product/People Driver)
+Exact buyer fragments available in the research (all from customers.md > Testimonials):
+- Tracker COO: "relatively easy to integrate"
+- Old Mutual MD: "leveraging technology in enhancing the safety and well-being of our customers"
 
-- **Job Titles:**
-  - Banks & Insurers: Head of Value-Added Services (VAS), Head of Bancassurance, Head of Digital Products, Health/Motor Product Manager (company.md, customers.md, signals.md).
-  - Mobility, Logistics & Gig Platforms: Head of Operations, Country Operations Manager, Fleet/Logistics Director, Rider Safety Lead (customers.md, signals.md).
-  - Corporate Employee Wellness: HR Director, Head of People & Culture, Employee Wellness & Benefits Lead (company.md, customers.md).
-- **What They Are Measured On:**
-  - Customer, rider, or employee adoption and engagement with embedded safety and wellness benefits (customers.md, voice.md).
-  - Speed of launching differentiated protection across business lines without heavy internal engineering lift (company.md, customers.md).
-  - Real-time incident visibility, audit trail completeness, and average emergency response times (customers.md, voice.md).
-- **Top 3 Pains (Grounded in Research Words):**
-  1. "Fragmented private security and emergency medical industry" makes stitching together reliable coverage across 40+ Kenyan towns slow and manual (company.md, market.md).
-  2. Lack of real-time incident tracking and verifiable audit trails when riders, drivers, policyholders, or staff trigger an emergency (customers.md, voice.md).
-  3. Rising road safety, fleet security, and employee duty-of-care expectations while Kenya's public 922 line covers medical evacuation only and excludes armed security and roadside assistance (market.md, signals.md).
-- **What Makes Them Start Looking:**
-  - Expanding an existing general/motor rescue benefit into sister entities (such as health/medical) or bundling safety into retail banking/bancassurance packages (company.md, signals.md, market.md).
-  - Operational or public pressure around gig rider road safety, logistics vehicle security, and breakdowns (customers.md, signals.md).
-  - Seasonal weather risks (heavy rains) or HR wellness benefit reviews requiring documented duty-of-care plans (signals.md, company.md).
-- **Common Objections & Research-Backed Counters:**
-  - *Objection:* "Our general insurance arm already offers roadside assistance through Rescue.co or an internal desk." -> *Counter:* AURA unifies armed security, medical, and roadside dispatch in one white-label API that scales across banking and sister health/medical entities with live audit trails (company.md, competitors.md, customers.md).
-  - *Objection:* "Kenya just launched the free 922 ambulance line." -> *Counter:* 922 covers medical evacuation to the nearest facility only; it does not cover private armed security response, roadside vehicle recovery, or enterprise incident tracking (market.md, competitors.md).
+## 1. Champion: operations owner
 
-## Persona 2: Economic Buyer (Budget, ROI & Visionary Sign-Off)
+| Item | Detail | Source |
+|---|---|---|
+| Job titles seen | Head of Operations (Greenwheels), Operations Manager (Glovo Kenya), Chief Operating Officer (Tracker) | customers.md > Testimonials |
+| Measured on | Not found. Proxy only: AURA case-study headlines for similar buyers cite 45% controller time saved (StarFM, UK) and 7-minute response (Namola, South Africa) | customers.md > Named case studies |
+| Starts looking when | A platform decides to protect riders or drivers (Glovo, June 2026); a competitor signs shared accounts; heavy rains season | signals.md #3, #4, #9 |
 
-- **Job Titles:**
-  - Chief Financial Officer (CFO), Chief Executive Officer (CEO), Managing Director (Bank, General Insurance, or Health Insurance Entity) (company.md, customers.md, signals.md).
-  - Country Manager, General Manager, Chief Operating Officer (COO), or Chief Human Resources Officer (CHRO) (customers.md, company.md).
-- **What They Are Measured On:**
-  - Predictable per-user, per-month unit economics and demonstrable return on value-added service spend (benchmarked by AURA's ~3x ROI case study with Tracker) (company.md, customers.md, voice.md).
-  - Account/policyholder retention, non-price brand differentiation, and employee retention through tangible duty-of-care benefits (customers.md, voice.md).
-  - Avoiding fixed capital expenditure of building a 24/7 dispatch control room and responder network in-house (company.md, voice.md).
-- **Top 3 Pains (Grounded in Research Words):**
-  1. Margin compression in commoditized banking, insurance, and mobility/logistics markets where competitors match price unless differentiated by visionary value-added protection (customers.md, voice.md).
-  2. High fixed cost and operational liability of building an in-house 24/7 control room and vetted responder fleet (company.md, voice.md).
-  3. Reputational and commercial risk when customers, riders, or employees face delayed emergency response (market.md, customers.md).
-- **What Makes Them Start Looking:**
-  - Competitor insurers (Old Mutual, SanlamAllianz) or rival platforms (Glovo, Uber) publicly rolling out embedded emergency response (customers.md, signals.md).
-  - Annual budget cycles or group restructuring where CFO and C-suite evaluate cross-entity benefit consolidation (signals.md, company.md).
-- **Common Objections & Research-Backed Counters:**
-  - *Objection:* "Does per-user monthly pricing justify the spend?" -> *Counter:* AURA's B2B2C model keeps net cost per user low by leveraging a shared responder network, backed by Tracker's ~3x ROI case study (company.md, customers.md).
-  - *Objection:* "Will our customers or staff see AURA's brand instead of ours?" -> *Counter:* AURA is strictly white-label; end users interact under your brand, turning your brand into a safety network (company.md, voice.md).
+Top three pains
 
-## Persona 3: Influencer (Technical, Risk & C-Suite Vision Gatekeeper)
+| # | Pain | Whose words | Source |
+|---|---|---|---|
+| 1 | Integration effort | Buyer, by implication: "relatively easy to integrate" (Tracker COO) | customers.md > Testimonials |
+| 2 | No end-to-end view of an incident | AURA's Kenya lead, not the buyer: "full transparency to emergency response for the first time" | customers.md > Testimonials |
+| 3 | Riders or drivers exposed to road risks, from breakdowns to emergency response | Paraphrase of the Glovo Kenya Operations Manager | customers.md > Testimonials |
 
-- **Job Titles:**
-  - Technical: Chief Technology Officer (CTO), Head of Engineering, Head of Enterprise Architecture / API Integrations (company.md, customers.md).
-  - Risk & Operations: Head of Claims, Chief Risk Officer (CRO), Senior Manager of Security Operations, Legal & Compliance Manager (customers.md, market.md).
-  - Executive Vision Peer: Chief Strategy / Transformation Officer influencing C-suite sponsorship (company.md, voice.md).
-- **What They Are Measured On:**
-  - Low-friction API/SDK integration speed, security, and uptime (company.md, customers.md).
-  - Responder regulatory compliance (PSRA accreditation for security; KMPDC/Nursing Council verification for medical) and full incident audit trails (company.md, customers.md, market.md).
-- **Top 3 Pains (Grounded in Research Words):**
-  1. Engineering backlog friction when embedding real-time GPS emergency dispatch into an existing mobile banking, insurance, or fleet app (customers.md, voice.md).
-  2. Regulatory and legal exposure in Kenya's private security sector amid 2026 PSRA crackdowns on unlicensed firms (market.md, signals.md).
-  3. Missing audit trails and custom reporting during insurance claims investigations or workplace/fleet safety audits (customers.md).
-- **What Makes Them Start Looking:**
-  - Mobile app roadmap updates or post-merger platform integration windows (company.md, signals.md).
-  - PSRA regulatory enforcement updates or internal risk/claims audits (market.md, signals.md).
-- **Common Objections & Research-Backed Counters:**
-  - *Objection:* "How heavy is the engineering lift for our team?" -> *Counter:* Partners can integrate via custom REST/webhooks (Aura Panic API with structured staging tests) or deploy a turnkey white-label app, described by partners as "relatively easy to integrate" (company.md, customers.md).
-  - *Objection:* "How do we verify responders meet Kenyan statutory standards?" -> *Counter:* AURA vets Kenyan security partners for PSRA accreditation, valid licences, and public liability cover, and verifies medical responders through bodies such as the Nursing Council of Kenya (company.md).
+Objections
+
+| Objection | Source |
+|---|---|
+| Response times are not guaranteed in the terms | company.md > Products and services |
+| We already use Rescue.co (it shares Glovo and ICEA Lion with AURA) | competitors.md > Rescue.co |
+| AURA's published numbers conflict (lives saved, safe places) | company.md > Conflicts |
+| No Kenyan case study to check | customers.md > Named case studies |
+
+## 2. Economic buyer: executive sponsor
+
+| Item | Detail | Source |
+|---|---|---|
+| Job titles seen | Managing Director, General Insurance (Old Mutual); CEO (SanlamAllianz General Insurance Kenya, OUTsurance, Samsung Mobile South Africa) | customers.md, signals.md > New leaders |
+| Authority to sign | INFERRED from launches and testimonials. Budget authority is Not found | n/a |
+| Measured on | Not found. Proxy only: Tracker's case study headline is a revenue-driving value-added service with about 3x return | customers.md > Named case studies |
+| Starts looking when | Insurer widens value-added services; merger or joint venture; a rival offers cover | signals.md #1, #2, #4 |
+
+Top three pains
+
+| # | Pain | Whose words | Source |
+|---|---|---|---|
+| 1 | Improving customer safety and well-being through technology | Buyer: "safety and well-being of our customers" (Old Mutual MD) | customers.md > Testimonials |
+| 2 | Building the capability themselves | AURA site copy, not the buyer: without building it from scratch | company.md and voice.md |
+| 3 | Per-user cost across a large base | AURA's Kenya lead says it uses businesses to push net cost per user down | company.md > What they sell |
+
+Objections
+
+| Objection | Source |
+|---|---|
+| No public price list or per-user fee | company.md > Pricing model |
+| Free national 922 medical line may reduce paid medical value (INFERRED; AURA reaction Not found) | market.md section 1 |
+| Counterparty risk: funding and headcount figures vary by source | company.md > Funding, Team size |
+
+## 3. Influencer: security and compliance lead
+
+| Item | Detail | Source |
+|---|---|---|
+| Job titles seen | Senior Manager, Security Operations (IHS). Integration owner title Not found | customers.md > Testimonials |
+| Measured on | Not found | n/a |
+| Starts looking when | PSRA rules tighten; a tender requires compliance certificates; a security vendor fails checks | signals.md #6, #7 |
+
+Top three pains
+
+| # | Pain | Whose words | Source |
+|---|---|---|---|
+| 1 | Personnel who are well trained, disciplined and responsive | Paraphrase of the IHS testimonial | customers.md > Testimonials |
+| 2 | Vendor licensing and compliance exposure | Paraphrase of PSRA actions, not a buyer quote | market.md section 3 |
+| 3 | Uncertain responder availability by area | Paraphrase of AURA's terms | company.md > Products and services |
+
+Objections
+
+| Objection | Source |
+|---|---|
+| Can AURA prove responder vetting? AURA claims licensing checks, training and performance monitoring | voice.md > Proof points |
+| Crackdowns could shrink the pool of compliant responders (INFERRED) | market.md section 3 |
+| Data protection for location and health data | Not found; open question |
+
+## Open questions
+
+- Interview or call notes to replace paraphrased pains with buyers' own words.
+- KPIs each persona is measured on.
+- Who signs, who vetoes, and the real buying cycle.
+- Title of the technical integration owner at a Kenyan account.

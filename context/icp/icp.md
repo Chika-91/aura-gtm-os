@@ -1,39 +1,86 @@
-# Ideal Customer Profile (ICP): AURA Kenya
+# AURA ICP (Kenya focus)
 
-> Grounded strictly in `context/docs/research/` (`company.md`, `customers.md`, `competitors.md`, `market.md`, `signals.md`, `voice.md`). Checked 2026-11-13.
+Built only from `context/docs/research/` (sources checked 2026-11-13). Source tags show file and section. INFERRED = my link, no source states it. Open questions are listed at the end, not guessed.
 
-## Beachhead & Expansion Segments
-Mid-to-large B2B2C and enterprise organizations in Kenya that own a large policyholder, banking customer, rider/fleet, or employee base and want to embed white-label security, medical, and roadside emergency response without building a dispatch network from scratch (`company.md`, `customers.md`).
+## Who the ICP is
 
-- **Tier 1A (Primary Beachhead — Low-Hanging Fruit): Banks & Multi-Entity Insurers (Financial Services)** embedding white-label emergency response into retail banking/bancassurance packages or cross-selling from motor/general insurance into sister entities such as health, medical, and SME cover (`company.md`, `customers.md`, `signals.md`).
-- **Tier 1B (Primary Beachhead — Low-Hanging Fruit): Mobility, Logistics, Gig Delivery & Ride-Hailing Platforms** protecting drivers, riders, and commercial fleets on Kenyan roads with real-time incident visibility (`company.md`, `customers.md`, `signals.md`).
-- **Tier 2 (Enterprise Duty-of-Care Expansion): Large Corporates & Employee Wellness Programmes** offering embedded medical and personal safety protection as an employee benefit (`company.md`, `customers.md`).
+Kenyan businesses that have a base of customers, staff, drivers or riders and want to add security, medical and roadside response under their own brand. AURA sells embedded response through partners, not to individuals (company.md > What they sell).
 
----
+## Layer 1: Firmographic
 
-## 5-Layer ICP Matrix
-
-| Layer | Tier 1A: Banks & Multi-Entity Insurers | Tier 1B: Mobility, Logistics & Gig Platforms | Tier 2: Corporate Employee Wellness | Source Trace |
-|---|---|---|---|---|
-| **1. Firmographic** | Licensed Kenyan banks (bancassurance/retail banking) and general, health/medical, or composite insurance groups operating across major urban centres (`company.md`, `customers.md`, `market.md`). Exact headcount/revenue thresholds: Not found (`customers.md`). | Consumer delivery apps, ride-hailing platforms, logistics operators, and vehicle rental/leasing fleets active in Nairobi, Mombasa, and 40+ Kenyan towns (`company.md`, `customers.md`). | Mid-to-large Kenyan corporates and institutions with field staff, lone workers, or structured employee wellness programmes (`company.md`, `customers.md`). | `company.md`, `customers.md`, `market.md` |
-| **2. Technographic** | Mobile banking app, policyholder app, or digital portal capable of embedding an API panic trigger, white-label app, or webhook callouts (`company.md`, `customers.md`). | Consumer/driver mobile app or GPS fleet/telematics system able to integrate the Aura Panic API (`://aurasos.com`) or white-label SDK (`company.md`, `competitors.md`). | Internal employee wellness app, HR benefits portal, or turnkey AURA white-label mobile app (`company.md`, `voice.md`). | `company.md`, `customers.md`, `competitors.md` |
-| **3. Intent Signals** | (1) Group insurer already running roadside/rescue on general/motor lines with unserved sister entities (e.g., medical/health, similar to Old Mutual's motor-to-medical expansion); (2) Banks/insurers launching differentiated value-added tiers; (3) Using Rescue.co for roadside only without armed security (`signals.md`, `competitors.md`). | (1) Public pressure or PR around rider/driver road safety and cargo/fleet security; (2) Seasonal weather hazards (heavy rains) or election-period security planning; (3) Using Rescue.co for roadside only with no security/medical dispatch (`signals.md`, `competitors.md`). | (1) Seasonal hazard alerts (heavy rains) or heightened duty-of-care reviews; (2) PSRA compliance tightening on corporate security vendors (`signals.md`, `market.md`). | `signals.md`, `competitors.md`, `market.md` |
-| **4. Persona** | **Champion:** Head of Value-Added Services (VAS), Head of Bancassurance, or Head of Digital Products. **Economic Buyer:** CEO / MD (Bank or Insurance Entity) & CFO. **Influencer:** Head of Claims, Chief Risk Officer, or Enterprise Architecture (`company.md`, `customers.md`, `signals.md`). | **Champion:** Head of Operations, Country Ops Manager, Fleet/Logistics Director, or Rider Safety Lead. **Economic Buyer:** Country Manager / GM, COO, & CFO. **Influencer:** Head of Engineering / Integrations or Legal/Risk (`customers.md`, `signals.md`). | **Champion:** HR Director / Head of People & Culture or Employee Wellness Lead. **Economic Buyer:** CEO / MD, CFO, & CHRO. **Influencer:** Chief Risk Officer, Head of Security Ops, & CTO/IT (`company.md`, `customers.md`). | `company.md`, `customers.md`, `signals.md` |
-| **5. Engagement Readiness** | Digital banking or policyholder app distribution, executive sponsorship for non-price product differentiation, and engineering capacity for Aura Panic API staging tests (`company.md`, `customers.md`). | Active mobile rider/driver app or GPS fleet system in Kenya, ops team needing live incident audit trails, and per-user/per-month unit economics fit (`company.md`, `customers.md`). | Structured HR/wellness benefit budget, executive duty-of-care mandate, and predictable per-employee/per-month pricing fit (`company.md`, `voice.md`). | `company.md`, `customers.md`, `voice.md` |
-
----
-
-## Who Is NOT a Fit (Exclusions)
-
-| Excluded Segment | Why They Are Not a Fit | Source Trace |
+| Attribute | What the research supports | Source |
 |---|---|---|
-| **Direct-to-Consumer (Individual Retail Buyers)** | AURA operates strictly B2B2C via enterprise partners and routes individuals to its Partner Hub rather than selling direct retail plans (`company.md`, `voice.md`). | `company.md`, `voice.md` |
-| **Small Businesses (SMBs) & Micro-Merchants** | Per-user monthly API economics and staging integration requirements fit mid-to-large enterprises with large user bases, not standalone SMBs (`customers.md`, `company.md`). | `company.md`, `customers.md` |
-| **Unlicensed / Non-Compliant Private Security Firms (Supply Side)** | AURA requires Kenyan response partners to hold PSRA accreditation, a valid security service provider licence, and public liability insurance; PSRA shut 27 unlicensed firms in Mar 2026 (`company.md`, `market.md`). | `company.md`, `market.md` |
-| **Standalone Consumer Apps Without Physical Safety/Mobility Touchpoints** | Per-user emergency response converts best where users face real-world road, personal, or property risk (`company.md`, `customers.md`). | `company.md`, `customers.md` |
+| Industry (proven in Kenya) | Insurers (Old Mutual, SanlamAllianz, ICEA Lion); ride-hailing and delivery platforms (Uber, Glovo); mobility and vehicle rental (Greenwheels) | customers.md > Named customers in Kenya |
+| Industry (listed by AURA, no named Kenyan buyer) | Facility and property management, construction, alarm monitoring centres, telematics, security and guarding, consumer apps, handheld devices, employee wellness, medical insurer, ATM protection, financial services, lone worker | customers.md > Industries AURA targets; Not found list |
+| Size | Not published. Named accounts are insurers and platforms (INFERRED mid to large) | customers.md > Company sizes |
+| Geography | Kenya. AURA cites 40+ cities and towns and about 70% of major urban areas with full device tech. Nairobi and Mombasa were the launch cities | company.md > Markets and footprint |
+| Business model | Has an end-user base to distribute to. Partner pays per user per month, and can offer the service free or as a paid value-added service | company.md > Pricing model |
+| Brand control | Wants end users to see the partner's brand, not AURA's | company.md > What they sell |
 
-## Open Questions (Not Supported by Current Research)
-- Exact minimum seat volume, per-user/per-month KES or USD pricing, and onboarding fees (`company.md`).
-- Insurance Regulatory Authority (IRA) and Central Bank/bancassurance rules on bundling value-added emergency services (`market.md`).
-- Kenya Data Protection Act compliance requirements for real-time GPS location and medical alert payloads (`market.md`).
-- Named Kenyan banking or corporate employee-wellness reference customers (`customers.md` notes AURA lists financial services and employee wellness verticals, though no Kenyan bank/wellness logos are publicly named yet).
+## Layer 2: Technographic
+
+| Signal | Evidence | Source |
+|---|---|---|
+| Has or will build a customer app | SanlamAllianz Emergency Assist app; Uber in-app emergency button; Old Mutual service via app or phone call | customers.md > Named customers in Kenya |
+| Can integrate by API or accept a white-label app | Panic API (customers, subscriptions, callouts, webhooks); white-label app; production needs AURA sign-off | company.md > Products and services |
+| Runs vehicle tracking or telematics | Roadside page mentions attaching telemetry to incident reports; Tracker is a telematics customer (South Africa) | competitors.md and customers.md |
+| Runs a monitoring or control-room platform | DSOC integrated via Sentinel CMS (UK) | customers.md > Named case studies |
+| Alarm or IoT devices | Property Protect connects alarm systems; People Protect supports buttons and wearables | company.md > Products and services |
+| Kenyan prospects' actual tech stacks | Not found | n/a |
+
+## Layer 3: Intent signals
+
+| Signal | Status | Source |
+|---|---|---|
+| Insurer launches or widens a value-added emergency service (Old Mutual said it would extend beyond motor) | Observed | signals.md #1 |
+| Insurer merger or joint venture (SanlamAllianz formed 2025) | Observed; need INFERRED | signals.md #2 |
+| Gig or delivery platform adds rider safety (Glovo, June 2026) | Observed | signals.md #3 |
+| Competitor wins a shared account (Glovo and ICEA Lion appear with both AURA and Rescue.co) | Observed | signals.md #4 |
+| Private security regulation tightening (draft rules 25 Aug 2026, wage enforcement, firm closures) | Observed; effect on buyers INFERRED | signals.md #6, market.md section 3 |
+| Public tender asks for verified security vendors (Kenya Railways, Oct 2026) | Observed | signals.md #7 |
+| Heavy rains season | Observed | signals.md #9 |
+| Election 2027 countdown | Observed; relevance INFERRED | signals.md #10 |
+| Hiring, funding or new leaders at target accounts | Not found | signals.md > Hiring, Funding, New leaders |
+
+## Layer 4: Persona
+
+Three roles. Detail in `personas.md`.
+
+| Role | Titles seen in research |
+|---|---|
+| Champion | Head of Operations, Operations Manager, Chief Operating Officer |
+| Economic buyer | CEO, Managing Director |
+| Influencer | Senior Manager, Security Operations; integration owner (title Not found) |
+
+## Layer 5: Engagement readiness
+
+| Readiness test | Evidence | Source |
+|---|---|---|
+| Accepts that response times are not guaranteed | AURA's terms say availability depends on responders in the area | company.md > Products and services |
+| Can run a staging integration then go live with AURA sign-off | Docs describe a staging sandbox and a go-live checklist | company.md > Products and services |
+| Users sit in covered urban areas | About 70% of major urban areas fully equipped | company.md > Markets and footprint |
+| Decides free versus paid value-added service | Both are supported | company.md > Pricing model |
+| Open to a demo or partner call | AURA's calls to action are "book a demo" and join the network | voice.md > Headlines and taglines |
+| Preferred outreach channel, buying cycle, budget owner | Not found | n/a |
+
+## Not a fit
+
+| Who | Why | Source |
+|---|---|---|
+| Individual consumers | AURA sends individuals to an AURA-powered partner | company.md > What they sell |
+| Buyers who need a guaranteed response time | Terms do not guarantee times | company.md > Products and services |
+| Buyers whose users are mainly outside covered areas | Coverage claims cover major urban areas; rural coverage Not found (fit INFERRED) | company.md > Markets and footprint |
+| Security or ambulance firms as buyers | They are the supply side. Route to network onboarding | customers.md > Kenya response network |
+| Unlicensed security firms | AURA requires PSRA accreditation, a security licence and public liability cover | company.md > Markets and footprint |
+| Accounts in South Africa, the UK or the US | Out of scope for this Kenya ICP | company.md > Markets and footprint |
+
+Unproven, not excluded: fintech, banking, ATM, employee wellness and lone-worker buyers in Kenya. AURA lists them, but no named Kenyan customer was found.
+
+## Open questions
+
+- Price per user, and any minimum volume or fee for API access.
+- Size thresholds for a viable account.
+- How AURA positions against the 922 line (no public mention found; market.md and competitors.md flag it).
+- Which accounts use both AURA and Rescue.co, and how they split work.
+- Kenya data-protection rules for location and health data.
+- Who owns the budget and how long a deal takes.
