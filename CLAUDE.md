@@ -1,7 +1,7 @@
 # AURA GTM Context OS
 
 ## Company
-[Fill in one line after research, with a source.]
+AURA is a B2B emergency response platform, founded in 2017, that lets businesses embed security, medical and roadside response into their products, operating in South Africa, Kenya, the UK and the US. (Source: https://www.aurasos.com/en-ke/about)
 
 ## How this folder works
 - `.claude/skills/`: reusable skills. Read the matching SKILL.md before any repeatable task.
