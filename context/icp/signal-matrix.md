@@ -34,3 +34,26 @@
 ## Top 4 Signals to Build First (and Why)
 
 1. **Signal S1: Sister-Entity / Product Expansion at Multi-Entity Insurers & Banks (Score: 18/20)**
+   - **Why build first:** Low-friction lift - insurers already have an active policyholder base and digital distribution, so they can easily embed AURA across sister health, medical, and SME lines without greenfield education (`INFERRED` conversion speed, grounded in Tracker COO's "relatively easy to integrate" quote in `customers.md`, `icp.md`, `signals.md`).
+   - **Detection stack:** Crawl insurer/bank product pages via **Crawl4AI / Apify** + enrich accounts in **Clay**.
+2. **Signal S2: Rider / Driver Road Safety & Fleet Welfare Pressure in Mobility & Logistics (Score: 18/20)**
+   - **Why build first:** Proven low-hanging fruit following Glovo Kenya's June 2026 rollout (`customers.md`). Delivery, ride-hailing, and logistics apps already have mobile GPS infrastructure and face immediate operational pressure to track rider incidents in real time (`signals.md`).
+   - **Detection stack:** Google Play/App Store + LinkedIn/press monitoring via **Apify + Clay**.
+3. **Signal S3: Roadside-Only Competitor Overlap (Rescue.co Accounts Missing Armed Security & Unified Dispatch) (Score: 17/20)**
+   - **Why build first:** Public partner announcements name exact accounts (such as Bolt, ICEA Lion, JW Seagon, and micro-insurers) that already budget for roadside assistance (`competitors.md`). AURA's wedge is consolidating armed security, medical, and roadside into one white-label API (`INFERRED` from Rescue.co's roadside-focused positioning in `competitors.md`).
+   - **Detection stack:** Scrape partner/press mentions with **Crawl4AI / Apify** + enrich decision-makers in **Clay**.
+4. **Signal S4: New Leadership in Product, Claims, VAS, Operations, or HR/People (Past 90-180 Days) (Score: 17/20)**
+   - **Why build first:** Universal, repeatable Clay workflow (`workflow-anatomy.md`) that scales across all three ICP tiers whenever a new executive arrives with a 90-day mandate to launch differentiated protection or audit-backed claims workflows (`personas.md`).
+   - **Detection stack:** **Apollo / LinkedIn Sales Navigator via Clay "Find People" + job change tracking**.
+
+---
+
+## Workflow Tracker Pre-Fill (`workflow-anatomy.md` Matrix 3)
+
+| W # | Status | Workflow Name | Mother Intent | Primary Segment | Detection Tool |
+|---|---|---|---|---|---|
+| W1 | Planned | Multi-Entity Insurer & Bancassurance Sister-Line Expansion | New product launches | Tier 1A: Banks & Insurers | Crawl4AI + Clay |
+| W2 | Planned | Gig & Logistics Rider Safety / Incident Visibility Play | Website content mentions | Tier 1B: Mobility & Logistics | Apify + Clay |
+| W3 | Planned | Roadside-Only Competitor Security Consolidation Wedge | Competitor customers *(compound)* | Tier 1A & Tier 1B | Crawl4AI + Clay |
+| W4 | Planned | New Product / Claims / VAS / Ops / People Leader 90-Day Mandate | New leadership (past 90/180 days) | Tier 1A, 1B & Tier 2 | Apollo + Clay |
+
