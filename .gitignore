@@ -5,3 +5,8 @@
 *.xlsx
 .DS_Store
 .claude/settings.local.json
+clay-session.json
+rex-config.json
+__pycache__/
+*.pyc
+node_modules/
