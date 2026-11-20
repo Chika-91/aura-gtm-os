@@ -113,7 +113,7 @@ flowchart TD
     F -- Tier 1B: Mobility & Logistics --> H[1H Rider & Fleet Safety Track]
     F -- Tier 2: Corporate Wellness --> I[1I Duty-of-Care Track]
     G & H & I --> J{1J Existing Provider?}
-    J -- Rescue.co Roadside --> K1[2A Security + Unified API Wedge]
+    J -- Rescue.co Roadside --> K1[2A Switch Rescue.co Client to AURA End-to-End Platform]
     J -- Internal Motor Only --> K2[2B Multi-Division Expansion Angle]
     J -- None Detected --> K3[2C First-Time White-Label Launch Beyond 922]
     K1 & K2 & K3 --> L[2D Find People: Champion, Economic Buyer & Influencer via Clay/Apollo]

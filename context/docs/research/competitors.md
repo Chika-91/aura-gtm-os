@@ -54,3 +54,7 @@ Scope: Kenya first, because the target page is aurasos.com/en-ke. Global players
 ## Not found
 
 - AURA's stated competitive set. Kenyan competitor pricing for B2B platform access. Market share figures. Win and loss data.
+
+### Rescue.co Service Structure & Competitive Displacement Update (Checked 2026-11-20 via rescue.co)
+- **Rescue.co Core vs. Add-On Structure (`rescue.co`):** Publicly includes 24-hour dispatch response and medical rescue cover (800+ ground ambulances) as core, while offering roadside rescue & assistance (130+ responders: towing, tyre/battery, fuel delivery, and roadside security response) and air rescue (70+ helicopters/aircraft) as optional add-ons or custom B2B bundles, alongside an SOS button API (`rescue.co`, checked 2026-11-20).
+- **Commercial Displacement Strategy (`INFERRED`):** Rescue.co and AURA are direct competitors. When a Kenyan insurer, bank, or mobility platform already uses Rescue.co for single-service or bundled packages, AURA's play is transitioning that client onto AURA's single end-to-end white-label platform—aggregating PSRA-vetted private armed security, medical, and roadside dispatch natively under one API, one SLA, and one digital incident audit trail.
