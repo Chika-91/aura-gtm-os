@@ -1,0 +1,145 @@
+{
+  "title": "How the AURA sister-line workflow moves through Clay",
+  "subtitle": "Each row is a table. Follow the numbers left to right. Paid steps only run on rows that passed every step before them.",
+  "lanes": [
+    {
+      "id": "ref",
+      "name": "Reference lists",
+      "note": "you upload them",
+      "dashed": true
+    },
+    {
+      "id": "co",
+      "name": "Companies",
+      "note": "one row per company.\nThe main table.",
+      "main": true
+    },
+    {
+      "id": "ppl",
+      "name": "People",
+      "note": "up to 3 champions at\neach ready company",
+      "dashed": false
+    }
+  ],
+  "steps": [
+    {
+      "id": "x",
+      "n": "0",
+      "lane": "ref",
+      "col": 2,
+      "title": "Upload two lists",
+      "text": "Partner list (held for review). IRA and CBK list with licence category",
+      "cost": null
+    },
+    {
+      "id": "s1",
+      "n": "1",
+      "lane": "co",
+      "col": 1,
+      "title": "Find companies",
+      "text": "Clay search: Kenya, insurance and banking, 51 to 5,000 staff",
+      "cost": "free"
+    },
+    {
+      "id": "s2",
+      "n": "2",
+      "lane": "co",
+      "col": 2,
+      "title": "Free checks",
+      "text": "Has a domain, on the licensed list (not a broker), not excluded",
+      "cost": "free"
+    },
+    {
+      "id": "s3",
+      "n": "3",
+      "lane": "co",
+      "col": 3,
+      "title": "Enrich and read site",
+      "text": "Headcount, size band, website text, customer app link",
+      "cost": "paid"
+    },
+    {
+      "id": "s4",
+      "n": "4",
+      "lane": "co",
+      "col": 4,
+      "title": "Two AI signals",
+      "text": "Sister division? Existing rescue provider? Each with evidence",
+      "cost": "paid"
+    },
+    {
+      "id": "s5",
+      "n": "5",
+      "lane": "co",
+      "col": 5,
+      "title": "Company gate",
+      "text": "Ready, Held or Dropped. Only Ready companies get people",
+      "cost": "free"
+    },
+    {
+      "id": "s6",
+      "n": "6",
+      "lane": "ppl",
+      "col": 6,
+      "title": "Find the people",
+      "text": "People search from the Ready view. Title decides the role",
+      "cost": "free"
+    },
+    {
+      "id": "s7",
+      "n": "7",
+      "lane": "ppl",
+      "col": 7,
+      "title": "Route to a cell",
+      "text": "Provider x role = C1 to C12. Ready to Contact? gate",
+      "cost": "free",
+      "highlight": true
+    },
+    {
+      "id": "s8",
+      "n": "8",
+      "lane": "ppl",
+      "col": 8,
+      "title": "Email and copy",
+      "text": "Find and verify email, write the lines, paused sequencer",
+      "cost": "paid"
+    }
+  ],
+  "arrows": [
+    {
+      "from": "s1",
+      "to": "s2"
+    },
+    {
+      "from": "x",
+      "to": "s2",
+      "label": "both lists checked against",
+      "dashed": true
+    },
+    {
+      "from": "s2",
+      "to": "s3"
+    },
+    {
+      "from": "s3",
+      "to": "s4"
+    },
+    {
+      "from": "s4",
+      "to": "s5"
+    },
+    {
+      "from": "s5",
+      "to": "s6",
+      "label": "Ready companies only"
+    },
+    {
+      "from": "s6",
+      "to": "s7"
+    },
+    {
+      "from": "s7",
+      "to": "s8"
+    }
+  ]
+}
