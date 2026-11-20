@@ -57,3 +57,4 @@ AURA is a B2B emergency response platform, founded in 2017, that lets businesses
 - `tools/agent-browser`: browser automation scripts
 - `tools/crawl4ai`: local web crawler
 - `tools/rex`: unofficial Clay toolkit (by Leszek Lammel, MIT) that works in Clay through your browser session. Read GETTING_STARTED.md first.
+- Notion: [AURA GTM OS](https://app.notion.com/p/41e039e776aa81a3a9f3f01c369da755), a read-only mirror of `context/` and `output/` (raw research excluded). GitHub is the source of truth.
