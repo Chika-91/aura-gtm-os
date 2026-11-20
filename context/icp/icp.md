@@ -103,3 +103,7 @@ Unproven, not excluded: fintech, banking, ATM, employee wellness and lone-worker
 
 ### Additional Exclusion (Added Step 9 Review)
 - **Insurance Brokers & Independent Agents:** Brokers do not own the underlying policyholder relationship or underwriting balance sheet, making per-user monthly fees and API integration unviable (`INFERRED`).
+
+### Composite Insurer Framing & Bank Channel Distinction (Refined 2026-11-20)
+- **Kenyan Insurers (Composite & Multi-Line):** Target licensed composite and multi-line Kenyan insurers (excluding specific divisions already live with AURA) across their core underwriting divisions (**General Insurance**, **Medical/Health Insurance**, and **Life Insurance**) plus **Claims** and **Customer Care** (`INFERRED` segment refinement).
+- **Kenyan Retail Banks:** Target licensed Kenyan retail banks via **Bancassurance** and **Retail Banking / Value-Added Services (VAS)** leadership, since bancassurance sits inside the bank as the distribution arm for retail account holders and loan or card customers (`INFERRED` segment refinement).

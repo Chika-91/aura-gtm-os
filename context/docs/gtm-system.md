@@ -96,3 +96,40 @@
 
 | Pillar | How AURA Kenya's GTM System Satisfies It |
 |---|---|
+
+---
+
+## Visual Flowchart (GitHub Mermaid Diagram)
+
+```mermaid
+flowchart TD
+    A[1A Context OS: GitHub & CLAUDE.md] --> B[1B Buying Signals: Multi-Line Insurers, Mobility Expansion, Rescue.co Overlap, New Leaders]
+    B --> C[1C Find Companies: Clay + IRA/CBK Lists]
+    C --> D[1D Enrich Company: Clay Use AI / Website & App Check]
+    D --> E{1E ICP Fit?}
+    E -- No --> E1[Drop & Log Exclusion e.g. Brokers / SMBs]
+    E -- Yes --> F{1F Segment?}
+    F -- Tier 1A: Composite Insurers & Banks --> G[1G Insurance & Bancassurance Track]
+    F -- Tier 1B: Mobility & Logistics --> H[1H Rider & Fleet Safety Track]
+    F -- Tier 2: Corporate Wellness --> I[1I Duty-of-Care Track]
+    G & H & I --> J{1J Existing Provider?}
+    J -- Rescue.co Roadside --> K1[2A Security + Unified API Wedge]
+    J -- Internal Motor Only --> K2[2B Multi-Division Expansion Angle]
+    J -- None Detected --> K3[2C First-Time White-Label Launch Beyond 922]
+    K1 & K2 & K3 --> L[2D Find People: Champion, Economic Buyer & Influencer via Clay/Apollo]
+    L --> M[2E Email Waterfall: Prospeo -> Apollo -> LeadMagic -> ZeroBounce]
+    M --> N{2F Email Valid?}
+    N -- No --> N1[LinkedIn-Only Sequence via HeyReach]
+    N -- Yes --> O{2G Active in HubSpot CRM?}
+    O -- Yes --> O1[Suppress / Exclude Duplicate]
+    O -- No --> P[2H Claygent Personalised Opener]
+    P --> Q[3A 4-Touch Multi-Channel Sequence over 10 Days]
+    Q --> R{3B Reply Intent?}
+    R -- Interested --> R1[HubSpot Deal + Slack Alert]
+    R -- Future Budget --> R2[60-Day Task + Re-queue at 1B]
+    R -- Wrong Person --> R3[Loop Back to 2D with Referral]
+    R -- Unsubscribe --> R4[Global Suppression List]
+    R -- No Reply --> R5[60-Day Cool-Down -> Re-enter 1B]
+    R1 --> S[3C HubSpot Pipeline: Discovery -> API Sandbox -> Sign-Off -> Live]
+    S --> T[3D Friday Weekly Feedback Loop -> Updates 1A Context OS]
+```
