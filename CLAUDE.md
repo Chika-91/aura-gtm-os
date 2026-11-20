@@ -25,9 +25,16 @@ AURA is a B2B emergency response platform, founded in 2017, that lets businesses
   - `workspace-cost-audit`: report a whole Clay workspace's monthly spend
 - `context/icp/`: ICP (icp.md), buyer personas (personas.md), and scored signal matrix (signal-matrix.md). Read before choosing targets or writing copy.
 - `context/positioning/`: positioning docs. Read before any messaging work.
+  - `value-proposition.md`: job, pain, gain and proof per persona
+  - `positioning.md`: category, target, alternative, unique value, proof, statement
+  - `competitors.md`: competitor table, where AURA wins and loses, responses
 - `context/messaging/`: approved messaging and proof points. Read before drafting copy.
+  - `messaging.md`: core message, pillars, persona angles, words to use and avoid
 - `context/brand-kit/`: voice, tone and style. Read before anything customer-facing.
+  - `brand.md`: tone of voice and key phrases from AURA's own copy
 - `context/docs/research/`: raw research with sources. Read when you need a fact.
+- `context/docs/case-studies.md`: every customer story found (customer, size, industry, problem, result, quote, source).
+- `context/docs/facts.md`: verified fact lookup with source files.
 - `knowledge-base/playbooks/`: copy rules and frameworks, signal matrix, workflow anatomy, Clay. Read before running a workflow.
 - `knowledge-base/learnings/`: what worked and what did not. Read before repeating an approach.
 - `meetings/`: meeting notes. Read for decisions and open actions.
