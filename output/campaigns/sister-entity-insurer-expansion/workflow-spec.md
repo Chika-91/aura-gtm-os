@@ -50,7 +50,7 @@ Three candidate workflows were evaluated from `context/icp/signal-matrix.md` bef
 
 Starting values for the free Clay search. Read the count before importing, record it in the work log and adjust (build step 4).
 
-- **Find Companies:** Country = Kenya. Industry = insurance (insurer track) and banking (CBK track), as two segments. Employees = 51 to 5,000 (`INFERRED` starting band for "mid-to-large"; confirm against the real count). Exclude the domains in the Exclusions table.
+- **Find Companies:** Country = Kenya. Any Kenyan office qualifies, including groups headquartered in South Africa (owner decision 2026-11-20). Industry = insurance (insurer track) and banking (CBK track), as two segments. Employees = 51 to 5,000 (`INFERRED` starting band for "mid-to-large"; confirm against the real count). Exclude the domains in the Exclusions table.
 - **Imported lists:** IRA licensed insurers and CBK licensed banks as a CSV with Company Name, Domain, Company Type (`insurer` or `bank`) and the IRA or CBK category. Domains left blank rather than guessed.
 - **Find People:** Country = Kenya. Job title contains any of: Medical, Health, General Insurance, Motor, Life, Claims, Customer Care, Member Experience, Product, VAS, Value Added, Bancassurance. Head, director or manager level. Up to 3 people per company.
 - **Test size:** import 25 to 50 rows first with auto-run off; the target is at least 20 fully enriched rows.
