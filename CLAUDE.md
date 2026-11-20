@@ -29,7 +29,7 @@ AURA is a B2B emergency response platform, founded in 2017, that lets businesses
   - `positioning.md`: category, target, alternative, unique value, proof, statement
   - `competitors.md`: competitor table, where AURA wins and loses, responses
 - `context/messaging/`: approved messaging and proof points. Read before drafting copy.
-  - `messaging.md`: core message, pillars, persona angles, words to use and avoid
+  - `messaging.md`: core message, pillars, persona angles, words to use and avoid. `facts.md`: the only authorized source of names and claims for copy
 - `context/brand-kit/`: voice, tone and style. Read before anything customer-facing.
   - `brand.md`: tone of voice and key phrases from AURA's own copy
 - `context/docs/research/`: raw research with sources. Read when you need a fact.

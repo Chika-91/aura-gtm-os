@@ -1,6 +1,6 @@
 # Workflow Spec: Multi-Entity Insurer & Bancassurance Sister-Line Expansion (`W1`)
 
-**Status:** STRUCTURE-APPROVED 2026-11-13 · copy pending
+**Status:** STRUCTURE-APPROVED 2026-11-13 · amended and re-approved 2026-11-20 (5-touch cadence, `{{social_proof}}`, C9 angle) · COPY-APPROVED 2026-11-20 (E1, DM1, E2, DM2, E3)
 ## 0. Candidate Workflow Selection & Strategic Overrides
 
 Three candidate workflows were evaluated from `context/icp/signal-matrix.md` before locking **W1**:
@@ -80,7 +80,7 @@ Three candidate workflows were evaluated from `context/icp/signal-matrix.md` bef
 | **C7** | `internal_motor_only` x `claims_care` | General motor desk handles emergency calls manually, creating heavy logistical phone-chasing overhead and inconsistent incident records for Claims (`customers.md`, `INFERRED`). | Offload manual emergency call-chasing from internal care teams to automated 24/7 dispatch while equipping Claims with real-time incident visibility and auditable reporting across divisions. |
 | **C8** | `internal_motor_only` x `bancassurance_vas` | Insurer group has proven motor rescue on one line and now wants a packaged value-added service for bancassurance or digital distribution (`signals.md`, `INFERRED`). | Package white-label security, medical, and roadside protection as a low-friction bancassurance add-on using existing API/white-label architecture ("relatively easy to integrate"). |
 
-| **C9** | `none_detected` x `medical_health` | Medical/Health insurer has no public embedded emergency response partner, relying on member reimbursements or public 922 evacuation (`market.md`, `INFERRED`). | Differentiate medical plans in a price-driven market by embedding 24/7 private medical and armed security response under the insurer's own brand, delivering faster care than 20 to 60 minute public delays without building a dispatch network. |
+| **C9** | `none_detected` x `medical_health` | Medical/Health insurer has no public embedded emergency response partner, relying on member reimbursements or public 922 evacuation (`market.md`, `INFERRED`). | Differentiate medical plans in a price-driven market by embedding 24/7 private medical and armed security response under the insurer's own brand, without building a dispatch network (amended 2026-11-20: the unverified 20 to 60 minute delay comparison is removed). |
 | **C10** | `none_detected` x `general_life` | General or Life insurer offers traditional cover without real-time emergency response, competing mainly on price (`customers.md`, `INFERRED`). | Stand out beyond price in Kenyan general and life insurance by embedding white-label security, medical, and roadside protection with predictable per-user monthly unit economics. |
 | **C11** | `none_detected` x `claims_care` | Claims and Customer Care teams handle post-incident reports reactively with no live scene visibility or automated dispatch (`customers.md`, `INFERRED`). | Shift Claims and Care from reactive post-incident paperwork to real-time emergency intervention with a full digital audit trail that lowers claim severity and lightens care-team phone overhead. |
 | **C12** | `none_detected` x `bancassurance_vas` | Retail bank or bancassurance unit has digital customer distribution but no embedded emergency protection tier (`icp.md`, `INFERRED`). | Launch a differentiated white-label emergency protection tier across retail banking/bancassurance accounts via API or turnkey white-label app without building dispatch infrastructure from scratch. |
@@ -98,10 +98,149 @@ Three candidate workflows were evaluated from `context/icp/signal-matrix.md` bef
 | `{{sister_line_detected}}` | `crawl4ai_scrape.sister_division_url_title` | All (`C1` - `C12`) |
 | `{{app_platform_clause}}` | `play_store_check.context_clause` | Only when `has_mobile_customer_app = true` |
 | `{{macro_922_context}}` | `static_flag.post_922_clause` | All (`C1` - `C12`) |
+| `{{social_proof}}` | Authorized proof line from `context/messaging/facts.md` (Old Mutual and SanlamAllianz; one line, no routing; added 2026-11-20) | All (`C1` - `C12`) |
 
 ---
 
 ## 7. Cadence & Channel `[ENGINE]`
 - **Periodicity:** Always-on weekly trigger scan (Monday morning Crawl4AI/Apify refresh + Clay enrichment) paired with quarterly IRA/CBK directory sweeps (`gtm-system.md`).
-- **Channels & Touch Cadence:** Multi-channel **Email (`Smartlead` / `Instantly`) + LinkedIn (`HeyReach`)**, **4 touches over 10 business days** (`Day 1`: Signal-anchored email -> `Day 3`: LinkedIn connection/note -> `Day 6`: Role-specific value follow-up [audit trail and care-team phone overhead for Claims & Care; sister-line differentiation for Division Heads] -> `Day 10`: Low-friction demo/scoping close).
+- **Channels & Touch Cadence:** Multi-channel **Email (`Smartlead` / `Instantly`) + LinkedIn (`HeyReach`)**, **5 touches over 10 days** (amended 2026-11-20): `Day 1`: Email 1 (signal-anchored) -> `Day 3`: empty connection request + DM 1 -> `Day 6`: Email 2 (role-specific value follow-up [audit trail and care-team phone overhead for Claims & Care; sister-line differentiation for Division Heads]) -> `Day 8`: DM 2 -> `Day 10`: Email 3 (low-friction close, referral ask).
 
+
+---
+
+## Copy
+
+### Email 1 (Day 1) - APPROVED 2026-11-20
+
+**Subject (static, one per send):** `{{company_name}} + emergency cover` | `emergency response idea` | `rescue cover question`
+
+**Body:**
+```
+{{first_name}},
+
+{{e1l1}}
+
+{{e1l2}}
+
+{AURA runs|We run} security, medical and roadside response that insurers and banks {offer|give} their customers under their own brand.
+
+{{social_proof}}
+
+{Worth a short conversation?|Open to a short conversation on it?|Is that worth a quick chat?}
+
+{{sender_name}}
+{{sender_title}}
+```
+
+**`{{e1l1}}` (route: `existing_assistance_provider`, exhaustive, no fallback):**
+- `+ rescue_co_roadside:` You have {{existing_rescue_program}} for roadside, and {{sister_line_detected}} is its own line.
+- `+ internal_motor_only:` You already have {{existing_rescue_program}} on the motor side, and {{sister_line_detected}} is a separate line.
+- `+ none_detected:` I couldn't find an emergency response partner on your {{sister_line_detected}} page, though I may have missed it.
+
+**`{{e1l2}}` (route: `target_division_role`, exhaustive, no fallback):**
+- `+ medical_health:` And I imagine the {{division_name}} team gets the call when a member needs an ambulance or a guard to reach them quickly.
+- `+ general_life:` And I imagine {{division_name}} is always looking for ways to stay useful to members between renewals.
+- `+ claims_care:` And I imagine the {{division_name}} team gets pulled in when an emergency call needs a responder arranged and the incident written up.
+- `+ bancassurance_vas:` And I imagine the {{division_name}} team is always looking for a benefit account holders use, not just hold.
+
+**`{{social_proof}}` (one line, no routing):** Old Mutual and SanlamAllianz already offer this to customers in Kenya, as OM Rescue Plus and Emergency Assist.
+
+**Assembled sample (C5, illustrative names):**
+
+> Subject: acme insurance + emergency cover
+>
+> Jane,
+>
+> You already have Acme Rescue on the motor side, and Acme Health Cover is a separate line.
+>
+> And I imagine the Medical team gets the call when a member needs an ambulance or a guard to reach them quickly.
+>
+> AURA runs security, medical and roadside response that insurers and banks offer their customers under their own brand.
+>
+> Old Mutual and SanlamAllianz already offer this to customers in Kenya, as OM Rescue Plus and Emergency Assist.
+>
+> Worth a short conversation?
+>
+> {{sender_name}}
+> {{sender_title}}
+
+### DM 1 (Day 3, after an empty connection request) - APPROVED 2026-11-20
+
+No subject, no signature. Route: `target_division_role` (exhaustive, no fallback).
+```
+Hi {{first_name}},
+{{dm1}}
+```
+- `+ medical_health:` How does the {{division_name}} team arrange an ambulance or a guard for a member who needs one?
+- `+ general_life:` Do {{division_name}} members get anything they use day to day, or is it mostly at claim time?
+- `+ claims_care:` When a member has an emergency, how does the {{division_name}} team get a responder to them and record what happened?
+- `+ bancassurance_vas:` Is there an emergency benefit account holders get through {{company_name}} today, or is that still open?
+
+### Email 2 (Day 6, same thread, subject `Re:` the same subject) - APPROVED 2026-11-20
+
+```
+{{first_name}},
+
+{{e2l1}}
+
+{{macro_922_context}}
+
+{{app_platform_clause}}
+
+{AURA's stated|Our stated} Nairobi averages are about 10 minutes for security and 10 to 15 for ambulances, depending on responder availability.
+
+{Has your team looked at something like this before?|Is this something your team has looked at?}
+
+{{sender_name}}
+{{sender_title}}
+```
+
+**`{{e2l1}}` (route: `target_division_role`, exhaustive, no fallback):**
+- `+ medical_health:` Your {{division_name}} team can follow each incident on AURA's platform while AURA's control room dispatches the ambulance or guard.
+- `+ general_life:` A {{division_name}} policy could carry a benefit members actually use: security, medical or roadside help, dispatched by AURA's control room under your brand.
+- `+ claims_care:` Each incident on AURA's platform comes with a full audit trail your {{division_name}} team can open, and AURA's control room handles the responder coordination.
+- `+ bancassurance_vas:` For {{division_name}}, it can go in as an add-on to existing accounts or policies, with the response run by AURA's control room under your brand.
+
+**`{{macro_922_context}}` (static, all leads):** Kenya's 922 line, launched in August 2026, covers medical evacuation only, so security and roadside sit outside it.
+
+**`{{app_platform_clause}}` (only when `has_mobile_customer_app = true`, otherwise the line is dropped):** Since you have a customer app, the response can sit inside it.
+
+**Assembled sample (C5, with an app, illustrative names):**
+
+> Re: acme insurance + emergency cover
+>
+> Jane,
+>
+> Your Medical team can follow each incident on AURA's platform while AURA's control room dispatches the ambulance or guard.
+>
+> Kenya's 922 line, launched in August 2026, covers medical evacuation only, so security and roadside sit outside it.
+>
+> Since you have a customer app, the response can sit inside it.
+>
+> AURA's stated Nairobi averages are about 10 minutes for security and 10 to 15 for ambulances, depending on responder availability.
+>
+> Has your team looked at something like this before?
+>
+> {{sender_name}}
+> {{sender_title}}
+
+### DM 2 (Day 8, static) - APPROVED 2026-11-20
+
+```
+{Hi|Hello} {{first_name}},
+{For context|Quick context}: AURA runs security, medical and roadside response that Old Mutual and SanlamAllianz {offer|give} their customers in Kenya under their own brand. {Would it be useful to see how it works?|Is that something worth a look?}
+```
+
+### Email 3 (Day 10, same thread, static) - APPROVED 2026-11-20
+
+```
+{{first_name}},
+
+{I'll leave it here after this note|This is my last note on it}, {as|since} I may be writing to the wrong person.
+
+If {{division_name}} doesn't own this, {who should I speak to|who would you point me to} at {{company_name}}?
+
+{{sender_name}}
+{{sender_title}}
+```
