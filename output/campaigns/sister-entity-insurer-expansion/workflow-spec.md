@@ -1,6 +1,7 @@
 # Workflow Spec: Multi-Entity Insurer & Bancassurance Sister-Line Expansion (`W1`)
 
-**Status:** STRUCTURE-APPROVED 2026-11-13 · amended and re-approved 2026-11-20 (5-touch cadence, `{{social_proof}}`, C9 angle) · COPY-APPROVED 2026-11-20 (E1, DM1, E2, DM2, E3)
+**Status:** STRUCTURE-APPROVED 2026-11-13 · amended and re-approved 2026-11-20 (5-touch cadence, `{{social_proof}}`, C9 angle) · COPY-APPROVED 2026-11-20 (E1, DM1, E2, DM2, E3) · amended and re-approved 2026-11-20 for Clay readiness (Step 1 review: ICP filter numbers, Clay-reachable sources, trigger fix, role routing, qualification checks, variables contract, single-pass cadence)
+
 ## 0. Candidate Workflow Selection & Strategic Overrides
 
 Three candidate workflows were evaluated from `context/icp/signal-matrix.md` before locking **W1**:
@@ -8,7 +9,7 @@ Three candidate workflows were evaluated from `context/icp/signal-matrix.md` bef
 1. **W1 (Selected) - Multi-Entity Insurer & Bancassurance Sister-Line Expansion (`Signal S1`, Score: 18/20):**
    - **Mother Intent:** *New product launches* / *Website content mentions*.
    - **Target Segment & Personas:** Tier 1A Kenyan insurers and retail banks/bancassurance groups, targeting Divisional Insurance Champions (**Head of Medical Insurance**, **Head of General Insurance**, **Head of Life Insurance**, **Head of Claims**, **Customer Care Lead**, **Head of Product**, **Head of VAS/Bancassurance**), Economic Buyers (**Managing Director**, **CEO**, **CFO**), and Influencers (**Chief Innovation Officer**, **Head of Legal**, **CTO**, **CRO**).
-   - **Data Source & Volume:** IRA and CBK licensed directories plus insurer/bank product pages scraped via **Crawl4AI / Apify + Clay** (`15-30` accounts/month, `INFERRED`, **Low-Medium** difficulty).
+   - **Data Source & Volume:** IRA and CBK licensed lists (imported as CSV) plus insurer/bank product pages read in **Clay** (website scrape feeding Use AI columns) (`15-30` accounts/month, `INFERRED`, **Low-Medium** difficulty).
    - **Why Selected:** Highest Kenyan social proof (`Old Mutual`, `SanlamAllianz`, `ICEA Lion`), low-friction API embedding across existing policyholder bases, and clear exclusion of **Insurance Brokers**.
 
 2. **W2 - Mobility & Logistics Geographic Expansion, Security Incident & Partnership Play (`Signal S2`, Score: 18/20):**
@@ -25,7 +26,7 @@ Three candidate workflows were evaluated from `context/icp/signal-matrix.md` bef
 
 ## 1. Mother Intent (Trigger) `[ENGINE]`
 - **Catalog Match (`workflow-anatomy.md`):** **New product launches** / **Website content mentions** (paired with **Competitor customers** as a routing layer).
-- **Trigger Statement:** A licensed Kenyan multi-entity insurer or retail bank/bancassurance group already operates a motor or general rescue product and promotes or expands medical, health, life, SME, or digital banking lines without unified armed security, medical, and roadside dispatch (`signals.md`, `icp.md`, `competitors.md`).
+- **Trigger Statement:** A licensed Kenyan multi-entity insurer or retail bank/bancassurance group runs or promotes a sister division (medical, health, life, SME, or digital banking/bancassurance lines). Whether it already has a motor or general rescue product, and who provides it, is read separately by `existing_assistance_provider` and routes the angle; it is not part of the trigger (amended 2026-11-20, so cells C9 to C12 can fire). This is a state, not a dated launch: the scan is a single pass for this build and has no launch-date field (`signals.md`, `icp.md`, `competitors.md`).
 
 ---
 
@@ -38,29 +39,55 @@ Three candidate workflows were evaluated from `context/icp/signal-matrix.md` bef
     - *Primary Champions:* **Head of Medical / Health Insurance**, **Head of General Insurance**, **Head of Life Insurance**, **Head of Claims**, **Customer Care / Member Experience Lead**, **Head of Product**, and **Head of VAS / Bancassurance** (focused on life-saving speed, loss/claims fraud reduction via full audit trails, and eliminating manual phone-chasing logistical overhead for emergency care teams).
     - *Economic Buyers:* **Managing Director (Medical / General / Life Entity)**, **Group CEO**, and **CFO**.
     - *Influencers:* **Chief Innovation Officer / Head of Innovation**, **Head of Legal**, **CTO / Head of Engineering**, and **Chief Risk Officer**.
+  - **Recipients in this Clay build (amended 2026-11-20):** champion titles only. The copy routes on division role alone, so Economic Buyer and Influencer titles have no copy lines and are not searched in this build. A title that matches no champion role is `unmatched` and held.
 - **Exclude:**
-  - **Insurance brokers and independent agents:** Brokers do not own the underlying policyholder relationship or underwriting balance sheet, making per-user monthly API fees and technical integration unviable (`INFERRED`).
-  - **Active Kenyan AURA divisions already live:** Specific business lines already contracted with AURA (e.g., **Old Mutual General Insurance**, **SanlamAllianz General Insurance**, **ICEA Lion** motor lines where active), while keeping unserved sister divisions eligible (`customers.md`, `signals.md`).
+  - **Insurance brokers and independent agents:** Brokers do not own the underlying policyholder relationship or underwriting balance sheet, making per-user monthly API fees and technical integration unviable (`INFERRED`). Detected from the IRA licence category in the imported list; where the category is missing, an AI check on the website decides, with an evidence field (amended 2026-11-20).
+  - **Active Kenyan AURA divisions already live:** Specific business lines already contracted with AURA (e.g., **Old Mutual General Insurance**, **SanlamAllianz General Insurance**, **ICEA Lion** motor lines where active), while keeping unserved sister divisions eligible (`customers.md`, `signals.md`). **Handled as a flag, not a domain exclusion (amended 2026-11-20):** a domain match would drop the whole group, so these accounts sit in the Exclusions table with Type = `existing_aura_partner`; the `existing_aura_partner` check holds those rows for manual review of which division is live. Domains come from `customers.md`; leave a domain blank rather than guess it.
   - **Out-of-scope profiles:** Individual retail consumers (D2C), standalone SMBs, unlicensed security/medical vendors, and non-Kenyan entities (`icp.md`).
+
+
+### Clay search filters (added 2026-11-20)
+
+Starting values for the free Clay search. Read the count before importing, record it in the work log and adjust (build step 4).
+
+- **Find Companies:** Country = Kenya. Industry = insurance (insurer track) and banking (CBK track), as two segments. Employees = 51 to 5,000 (`INFERRED` starting band for "mid-to-large"; confirm against the real count). Exclude the domains in the Exclusions table.
+- **Imported lists:** IRA licensed insurers and CBK licensed banks as a CSV with Company Name, Domain, Company Type (`insurer` or `bank`) and the IRA or CBK category. Domains left blank rather than guessed.
+- **Find People:** Country = Kenya. Job title contains any of: Medical, Health, General Insurance, Motor, Life, Claims, Customer Care, Member Experience, Product, VAS, Value Added, Bancassurance. Head, director or manager level. Up to 3 people per company.
+- **Test size:** import 25 to 50 rows first with auto-run off; the target is at least 20 fully enriched rows.
+- **Volume:** `15-30` qualifying accounts a month (`INFERRED`); replace with the real search count once read.
 
 ---
 
 ## 3. Sources `[ENGINE]`
-- **Account Universe & Regulatory Lists:** Insurance Regulatory Authority (IRA) Kenya licensed insurer directory and Central Bank of Kenya (CBK) licensed commercial bank directory scraped via **Crawl4AI (`tools/crawl4ai`) / Apify** into **Clay** (`gtm-system.md`).
-- **Trigger & Competitor Scrape:** Insurer/bank divisional product pages, press releases, and Rescue.co partner pages scraped via **Crawl4AI (`tools/crawl4ai`) / Apify** with keyword/regex extraction in **Clay** (`signals.md`, `competitors.md`).
-- **People & Contact Verification:** **Clay "Find People" + Apollo / LinkedIn Sales Navigator** for divisional titles, followed by **Clay Email Waterfall (Prospeo, Apollo, LeadMagic, ZeroBounce)** and **HubSpot CRM** deduplication (`gtm-system.md`).
+Every source below is reachable from Clay (amended 2026-11-20). Local tools such as Crawl4AI cannot be called from Clay; if used, they run outside Clay and the output is imported as a CSV.
+
+- **Account Universe & Regulatory Lists:** Insurance Regulatory Authority (IRA) Kenya licensed insurer list and Central Bank of Kenya (CBK) licensed bank list, imported into **Clay** as a CSV (optionally gathered outside Clay with **Crawl4AI (`tools/crawl4ai`) / Apify**), alongside the free **Find Companies** search (`gtm-system.md`).
+- **Trigger & Competitor Read:** each company's website content from Clay's website scrape (or a Claygent step where the scrape is blocked), read by Use AI columns for the sister-division and existing-provider signals, and by a formula for app links (`signals.md`, `competitors.md`).
+- **People & Contact Verification:** **Clay "Find People"** for the champion titles, followed by the **Clay email waterfall (about four providers, validation on and strict)**. HubSpot deduplication only if the HubSpot integration is connected in Clay; the Exclusions table covers existing customers either way (`gtm-system.md`).
 
 ---
 
 ## 4. Signals Table `[ENGINE]`
+Every data source below can be reached from Clay: a search filter, an enrichment, a Use AI column or a formula (amended 2026-11-20).
 
-| # | Signal | Role | How it's read (boolean / count / regex) | Output |
+| # | Signal | Role | How it's read in Clay | Output |
 |---|---|---|---|---|
-| **1** | `has_sister_entity_expansion` | `trigger` | Regex/keyword match on insurer/bank product pages & press for active motor/general rescue PLUS active Medical/Health, Life, SME, or Bancassurance divisions (`boolean`) | `true` / `false` (fires workflow when `true`) |
-| **2** | `existing_assistance_provider` | `router` | Keyword/regex match on scraped product pages & press for `"Rescue.co"` / `"Flare"`, internal motor rescue (`"OM Rescue"`, `"Emergency Assist"`), or no emergency partner mentioned (`enum`) | `rescue_co_roadside` / `internal_motor_only` / `none_detected` |
-| **3** | `target_division_role` | `router` | Regex match on contact job title from Apollo/LinkedIn (`Medical|Health`, `General|Motor`, `Life`, `Claims|Care`, `Bancassurance|VAS|Product`) (`enum`) | `medical_health` / `general_life` / `claims_care` / `bancassurance_vas` |
-| **4** | `has_mobile_customer_app` | `context-clause` | Google Play / App Store package check or website app link match (`boolean` - never routes; adds 1 line of API/white-label color) | `true` / `false` |
-| **5** | `post_922_macro_context` | `context-clause` | Static Kenya market flag (August 2026 national 922 medical-only ambulance launch; `boolean` - never routes) | `true` (highlights armed security + roadside + audit trail gap) |
+| **1** | `has_sister_division` | `trigger` | **Use AI** column on the website content from the Clay website scrape. Asks which sister divisions (medical or health, life, SME, bancassurance or digital banking) the company runs or promotes. JSON: `has_sister_division` (`yes` / `no` / `unclear`), `sister_line_name` (a clean line name, not a page title), `evidence`. Run condition: Pass is true. Prove on 2 to 3 rows first. | `true` when yes (fires the workflow), `false` when no, `unclear` is held for manual review |
+| **2** | `existing_assistance_provider` | `router` | **Use AI** column on the same scraped content. Looks for Rescue.co or Flare, an internal motor or general rescue program, or no emergency partner. JSON: `provider` (`rescue_co_roadside` / `internal_motor_only` / `none_detected` / `unclear`), `program_name` (the program's own name, blank if none), `evidence`. `unclear` when the scrape is empty or fails, so a failed scrape is never read as `none_detected`. | `rescue_co_roadside` / `internal_motor_only` / `none_detected`; `unclear` is held |
+| **3** | `target_division_role` | `router` | **Formula** on the contact's job title (case-insensitive, whole words), first match wins in this order: (1) Claims, Customer Care, Member Experience or Customer Experience gives `claims_care`; (2) Medical or Health gives `medical_health`; (3) Bancassurance, VAS or Value Added gives `bancassurance_vas`; (4) Product gives `bancassurance_vas` when `company_type` is `bank`, otherwise `general_life`; (5) General, Motor or Life gives `general_life`. No match gives `unmatched`. A companion `division_name` formula returns `Medical`, `General`, `Life`, `Claims & Care` or `Bancassurance` from the same match. | `medical_health` / `general_life` / `claims_care` / `bancassurance_vas`; `unmatched` is held |
+| **4** | `has_mobile_customer_app` | `context-clause` | **Formula** on the scraped homepage HTML: true when it contains a link to `play.google.com` or `apps.apple.com`. Check 3 rows by hand that the app is customer-facing. Never routes; adds one line of API or white-label colour. | `true` / `false` |
+| **5** | `post_922_macro_context` | `context-clause` | **Formula** returning the constant text of `{{macro_922_context}}` (August 2026 national 922 medical-only ambulance launch). Never routes. | The same text on every row |
+
+### Qualification checks (free formulas and lookups, not signals; added 2026-11-20)
+
+| Check | How it's read in Clay | Result |
+|---|---|---|
+| `is_licensed_insurer_or_bank` | Lookup on domain against the imported IRA and CBK list. The licence category excludes brokers and agents. Where the category is missing, a Use AI check on the website decides, with an evidence field. | `true` / `false` |
+| `size_in_band` | Formula on the Clay company headcount against the band in the section 2 filters. | `true` / `false` |
+| `has_domain` | Domain column not blank, URL type. | `true` / `false` |
+| `existing_aura_partner` | Lookup on domain against the `existing_aura_partner` rows in the Exclusions table. | `true` / `false` |
+
+`Pass` is true when `is_licensed_insurer_or_bank`, `size_in_band` and `has_domain` are all true. `Ready to Contact?` is true only when `Pass` is true, Signal 1 is `true`, Signal 2 is not `unclear`, Signal 3 is not `unmatched` and `existing_aura_partner` is false. A true `existing_aura_partner` holds the row; it does not drop it.
 
 ---
 
@@ -68,6 +95,9 @@ Three candidate workflows were evaluated from `context/icp/signal-matrix.md` bef
 - **Axis 1 (`existing_assistance_provider`):** `3` values (`rescue_co_roadside`, `internal_motor_only`, `none_detected`).
 - **Axis 2 (`target_division_role`):** `4` values (`medical_health`, `general_life`, `claims_care`, `bancassurance_vas`).
 - **Combined Matrix:** `3 x 4 = 12` stacked cells.
+- **Held states (amended 2026-11-20):** `unclear` on Signal 1 or 2, and `unmatched` on Signal 3, are not cells. Those rows stay in the table with Ready to Contact? false and are reviewed by hand; no fallback copy is written.
+- **Angles are meaning only:** phrases such as "armed security", "zero control-room capex" and "faster dispatch" in the cells below are not approved claims. Copy uses only claims in `context/messaging/facts.md`.
+- **Copy routing:** Email 1, Email 2 and DM 1 route on the two axes separately through the copy-line variables (section 6). The cell selects the angle and the report tag; it does not have its own copy.
 
 | Cell | Deterministic Read (`provider` x `division_role`) | What It Tells Us (Inferred Situation) | The Angle It Earns (Meaning Only - No Copy) |
 |---|---|---|---|
@@ -79,7 +109,6 @@ Three candidate workflows were evaluated from `context/icp/signal-matrix.md` bef
 | **C6** | `internal_motor_only` x `general_life` | General division has basic motor rescue, while Life or non-motor general lines lack tangible everyday living benefits for policyholders (`signals.md`, `INFERRED`). | Turn Life and non-motor general policies from passive annual payouts into everyday tangible protection with white-label personal safety and medical response across 40+ Kenyan towns. |
 | **C7** | `internal_motor_only` x `claims_care` | General motor desk handles emergency calls manually, creating heavy logistical phone-chasing overhead and inconsistent incident records for Claims (`customers.md`, `INFERRED`). | Offload manual emergency call-chasing from internal care teams to automated 24/7 dispatch while equipping Claims with real-time incident visibility and auditable reporting across divisions. |
 | **C8** | `internal_motor_only` x `bancassurance_vas` | Insurer group has proven motor rescue on one line and now wants a packaged value-added service for bancassurance or digital distribution (`signals.md`, `INFERRED`). | Package white-label security, medical, and roadside protection as a low-friction bancassurance add-on using existing API/white-label architecture ("relatively easy to integrate"). |
-
 | **C9** | `none_detected` x `medical_health` | Medical/Health insurer has no public embedded emergency response partner, relying on member reimbursements or public 922 evacuation (`market.md`, `INFERRED`). | Differentiate medical plans in a price-driven market by embedding 24/7 private medical and armed security response under the insurer's own brand, without building a dispatch network (amended 2026-11-20: the unverified 20 to 60 minute delay comparison is removed). |
 | **C10** | `none_detected` x `general_life` | General or Life insurer offers traditional cover without real-time emergency response, competing mainly on price (`customers.md`, `INFERRED`). | Stand out beyond price in Kenyan general and life insurance by embedding white-label security, medical, and roadside protection with predictable per-user monthly unit economics. |
 | **C11** | `none_detected` x `claims_care` | Claims and Customer Care teams handle post-incident reports reactively with no live scene visibility or automated dispatch (`customers.md`, `INFERRED`). | Shift Claims and Care from reactive post-incident paperwork to real-time emergency intervention with a full digital audit trail that lowers claim severity and lightens care-team phone overhead. |
@@ -88,22 +117,28 @@ Three candidate workflows were evaluated from `context/icp/signal-matrix.md` bef
 ---
 
 ## 6. Variables Contract `[ENGINE]`
-
-| Variable | Source Field | Exists in Branches |
+| Variable | Source in Clay | Exists in Branches |
 |---|---|---|
-| `{{first_name}}` | `apollo_contact.first_name` | All (`C1` - `C12`) |
-| `{{company_name}}` | `clay_account.company_name` | All (`C1` - `C12`) |
-| `{{division_name}}` | `clay_contact.inferred_division` (`Medical`, `General`, `Life`, `Claims & Care`, `Bancassurance`) | All (`C1` - `C12`) |
-| `{{existing_rescue_program}}` | `crawl4ai_scrape.rescue_program_name` | `C1` - `C8` only (never referenced in `C9` - `C12`) |
-| `{{sister_line_detected}}` | `crawl4ai_scrape.sister_division_url_title` | All (`C1` - `C12`) |
-| `{{app_platform_clause}}` | `play_store_check.context_clause` | Only when `has_mobile_customer_app = true` |
-| `{{macro_922_context}}` | `static_flag.post_922_clause` | All (`C1` - `C12`) |
-| `{{social_proof}}` | Authorized proof line from `context/messaging/facts.md` (Old Mutual and SanlamAllianz; one line, no routing; added 2026-11-20) | All (`C1` - `C12`) |
+| `{{first_name}}` | Find People first name, cleaned by formula | All (`C1` - `C12`) |
+| `{{company_name}}` | Clay company name, cleaned by formula (legal suffixes such as Ltd, Limited and PLC removed) | All (`C1` - `C12`) |
+| `{{division_name}}` | Formula on the job title, same match as Signal 3 (`Medical`, `General`, `Life`, `Claims & Care`, `Bancassurance`) | All (`C1` - `C12`) |
+| `{{existing_rescue_program}}` | Signal 2 Use AI field `program_name` | `C1` - `C8` only (never referenced in `C9` - `C12`) |
+| `{{sister_line_detected}}` | Signal 1 Use AI field `sister_line_name`: a clean line name such as "Medical Insurance", never a raw page title | All (`C1` - `C12`) |
+| `{{app_platform_clause}}` | Formula from Signal 4: "Since you have a customer app, the response can sit inside it." when true, otherwise blank | Only when `has_mobile_customer_app = true` |
+| `{{macro_922_context}}` | Constant formula text from Signal 5 | All (`C1` - `C12`) |
+| `{{social_proof}}` | Constant text from `context/messaging/facts.md` (Old Mutual and SanlamAllianz; one line, no routing; added 2026-11-20) | All (`C1` - `C12`) |
+| `{{e1l1}}` | Copy-line formula, routes on `existing_assistance_provider`; text in the Copy section; guarded by Ready to Contact? | All (`C1` - `C12`) |
+| `{{e1l2}}` | Copy-line formula, routes on `target_division_role`; guarded by Ready to Contact? | All (`C1` - `C12`) |
+| `{{e2l1}}` | Copy-line formula, routes on `target_division_role`; guarded by Ready to Contact? | All (`C1` - `C12`) |
+| `{{dm1}}` | Copy-line formula, routes on `target_division_role`; guarded by Ready to Contact? | All (`C1` - `C12`) |
+| `{{sender_name}}`, `{{sender_title}}`, `{{sender_email}}` | Filled per inbox in the sequencer; not Clay columns | All (`C1` - `C12`) |
+
+Spintax in braces (for example `{Worth a short conversation?|Open to a short conversation on it?}`) stays in the sequencer and is never built as a Clay formula.
 
 ---
 
 ## 7. Cadence & Channel `[ENGINE]`
-- **Periodicity:** Always-on weekly trigger scan (Monday morning Crawl4AI/Apify refresh + Clay enrichment) paired with quarterly IRA/CBK directory sweeps (`gtm-system.md`).
+- **Periodicity:** Single pass for this build (amended 2026-11-20): one search, one enrichment run and one website read per company. The weekly Monday scan and quarterly IRA/CBK sweeps in `gtm-system.md` are parked until the table is proven, because they need scheduled re-runs (`gtm-system.md`).
 - **Channels & Touch Cadence:** Multi-channel **Email (`Smartlead` / `Instantly`) + LinkedIn (`HeyReach`)**, **5 touches over 10 days** (amended 2026-11-20): `Day 1`: Email 1 (signal-anchored) -> `Day 3`: empty connection request + DM 1 -> `Day 6`: Email 2 (role-specific value follow-up [audit trail and care-team phone overhead for Claims & Care; sister-line differentiation for Division Heads]) -> `Day 8`: DM 2 -> `Day 10`: Email 3 (low-friction close, referral ask).
 
 
