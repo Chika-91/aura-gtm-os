@@ -13,6 +13,7 @@ AURA is a B2B emergency response platform, founded in 2017, that lets businesses
   - `campaign-copy`: gated process for writing and reviewing cold email and LinkedIn DM copy
   - `campaign-qa`: QA a Clay table or sending campaign against its workflow spec
   - `campaign-strategy`: generate 15 to 25 cold outbound campaign ideas
+  - `clay-build-plan`: turn an approved workflow spec into a step-by-step Clay build guide plus a swimlane flow diagram (writes instructions only; never touches Clay)
   - `crawl4ai`: crawl pages or sites into clean Markdown or JSON, free and local
   - `design-clay-table-json`: write the Clay table JSON blueprint from a campaign contract
   - `export-tables`: export Clay tables to local CSV files
