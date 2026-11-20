@@ -1,0 +1,53 @@
+{
+  "title": "AURA Kenya: outbound GTM system",
+  "subtitle": "Source: context/docs/gtm-system.md. From Context OS to signals, accounts, people, outreach, replies and a weekly feedback loop.",
+  "rows": [
+    {"title": "Find and qualify accounts", "direction": "ltr", "columns": ["1A", "1B", "1C", "1D", "1E", "1F", ["1G", "1H", "1I"]]},
+    {"title": "Pick the angle and the people", "direction": "rtl", "columns": ["1J", ["2A", "2B", "2C"], "2D", "2E", "2F", "2G"]},
+    {"title": "Reach out, handle replies, learn", "direction": "ltr", "columns": ["2H", "3A", "3B", ["3B1", "3B2", "3B3", "3B4", "3B5"], "3C", "3D"]}
+  ],
+  "nodes": {
+    "1A": {"kind": "start", "title": "Context OS", "sub": "ICP, personas, signals", "tools": ["claude_code", "github"]},
+    "1B": {"kind": "step", "title": "Buying signals", "sub": ["Sister-entity", "Rider safety", "Rescue.co overlap", "New leader"], "tools": ["n8n", "clay"]},
+    "1C": {"kind": "step", "title": "Find companies", "sub": "IRA and CBK lists, directories", "tools": ["clay"]},
+    "1D": {"kind": "step", "title": "Enrich company", "sub": "Headcount, app, providers", "tools": ["clay"]},
+    "1E": {"kind": "decision", "title": "ICP fit?"},
+    "drop": {"kind": "exit", "title": "Drop", "sub": "Log reason in Clay", "below": "1E"},
+    "1F": {"kind": "decision", "title": "Segment?"},
+    "1G": {"kind": "branch", "title": "Banks and insurers", "sub": "Sister-entity track"},
+    "1H": {"kind": "branch", "title": "Mobility and gig", "sub": "Rider and fleet safety"},
+    "1I": {"kind": "branch", "title": "Corporate wellness", "sub": "Duty of care"},
+    "1J": {"kind": "decision", "title": "Provider?"},
+    "2A": {"kind": "branch", "title": "Rescue.co only", "sub": "Security and API consolidation"},
+    "2B": {"kind": "branch", "title": "Motor rescue only", "sub": "Sister-entity cross-sell"},
+    "2C": {"kind": "branch", "title": "None found", "sub": "First-time white-label launch"},
+    "2D": {"kind": "step", "title": "Find people", "sub": "Champion, buyer, influencer", "tools": ["clay"]},
+    "2E": {"kind": "step", "title": "Find and verify email", "sub": "Waterfall", "tools": ["clay"]},
+    "2F": {"kind": "decision", "title": "Email valid?"},
+    "li": {"kind": "exit", "title": "LinkedIn only", "sub": "DM sequence", "below": "2F"},
+    "2G": {"kind": "decision", "title": "In HubSpot?"},
+    "sup": {"kind": "exit", "title": "Suppress", "sub": "Avoid duplicate outreach", "below": "2G"},
+    "2H": {"kind": "step", "title": "Personalise opener", "sub": "Signal, angle, persona", "tools": ["clay"]},
+    "3A": {"kind": "step", "title": "Outbound sequence", "sub": "3 to 4 touches, 10 days", "tools": ["Smartlead", "HeyReach"]},
+    "3B": {"kind": "decision", "title": "Reply?"},
+    "3B1": {"kind": "branch", "title": "Interested", "sub": "Deal and Slack alert"},
+    "3B2": {"kind": "branch", "title": "Future budget", "sub": "Task in 60 days, re-queue"},
+    "3B3": {"kind": "branch", "title": "Wrong person", "sub": "Back to 2D"},
+    "3B4": {"kind": "branch", "title": "Unsubscribe", "sub": "Global suppression"},
+    "3B5": {"kind": "branch", "title": "No reply", "sub": "60 day cool-down"},
+    "3C": {"kind": "step", "title": "CRM pipeline", "sub": ["Meeting booked", "Scoping", "API sandbox", "Sign-off", "Live partner"], "tools": ["hubspot"]},
+    "3D": {"kind": "start", "title": "Weekly review", "sub": "Friday: update Context OS", "tools": ["n8n", "github"], "align": "bottom"}
+  },
+  "edges": [
+    ["1A","1B"],["1B","1C"],["1C","1D"],["1D","1E"],["1E","1F","Yes"],["1E","drop","No"],
+    ["1F","1G"],["1F","1H"],["1F","1I"],
+    ["1G","1J"],["1H","1J"],["1I","1J"],
+    ["1J","2A"],["1J","2B"],["1J","2C"],
+    ["2A","2D"],["2B","2D"],["2C","2D"],
+    ["2D","2E"],["2E","2F"],["2F","2G","Yes"],["2F","li","No"],["2G","2H","No"],["2G","sup","Yes"],
+    ["2H","3A"],["3A","3B"],
+    ["3B","3B1"],["3B","3B2"],["3B","3B3"],["3B","3B4"],["3B","3B5"],
+    ["3B1","3C"],["3C","3D"]
+  ],
+  "loop": {"from": "3D", "to": "1A", "label": "Weekly loop: results update the Context OS"}
+}

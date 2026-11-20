@@ -2,6 +2,8 @@
 
 > Designed from `context/icp/icp.md`, `context/icp/personas.md`, `context/icp/signal-matrix.md`, and `context/docs/research/`. Modelled on the Reliance HMO end-to-end architecture and verified against the four GTM system pillars. Checked 2026-11-13.
 
+> **Miro board:** [AURA GTM System](https://miro.com/app/board/uXjVEL4OVIA=/) (editable flowchart of this system; source spec in `diagrams/aura-gtm-system.json`).
+
 ---
 
 ## Visual System Flow (Node-by-Node Architecture)
